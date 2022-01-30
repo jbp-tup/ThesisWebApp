@@ -1,0 +1,17 @@
+{% extends "MVNSDatabase/base.html" %}
+{% block content %}
+
+    <div class="container" style="width:90%; margin:auto">
+        <div class="form_container">
+            <legend><center><h3><b>Logout</b></h3></center></legend>
+            <hr>
+            <div>
+                <h6>You have been Logged Out.</h6>
+                <a class="btn btn-secondary" href="{% url 'MVNS-index' %}">Back to Home</a>
+                <a class="btn btn-primary" href="{% url 'MVNS-login' %}">Log In Again</a>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

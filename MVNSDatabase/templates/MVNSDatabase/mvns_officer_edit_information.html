@@ -1,0 +1,17 @@
+{% extends "MVNSDatabase/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <legend>
+      <center>
+        <h3><b>Add Data</b></h3>
+      </center>
+    </legend>
+    <div class="container" style="width:90%; margin:auto">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ officerEditInformationForm | crispy }}
+            <a href="{% url 'MVNS-index' %}" class="btn btn-danger">Back</a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+{% endblock content %}

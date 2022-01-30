@@ -1,0 +1,23 @@
+{% extends "MVNSDatabase/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <div class="container" style="width:90%; margin:auto">
+        <div class="form_container">
+            <legend><center><h3><b>Found Data</b></h3></center></legend>
+            <hr>
+            <h5>Officer Name: {{ dataID.officerName.first_name }} {{ dataID.officerName.last_name }}</h5>
+            <h5>Date: {{ dataID.dateDataCollected }} </h5>
+            <h5>Time: {{ dataID.timeDataCollected }} </h5>
+            <h5>Motorist First Name: {{ dataID.motoristFirstName }} </h5>
+            <h5>Motorist Last Name: {{ dataID.motoristLastName }} </h5>
+            <h5>Vehicle Plate Number: {{ dataID.plateNumber }} </h5>
+            <h5>Decibel Reading: {{ dataID.dbReading }} </h5>
+            <h5>Data Reading: {{ dataID.distance }} </h5>
+            <a href="{% url 'MVNS-index' %}" class="btn btn-danger">Back to Home</a>
+            <a href="{% url 'MVNS-search-data' %}" class="btn btn-primary">Search Again</a>
+            <br>
+            <br>
+        </div>
+    </div>
+{% endblock content %}

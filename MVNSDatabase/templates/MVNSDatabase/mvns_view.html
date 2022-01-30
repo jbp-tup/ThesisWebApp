@@ -1,0 +1,103 @@
+{% extends "MVNSDatabase/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container" style="width:90%; margin:auto">
+      <legend>
+        <center>
+          <h3><b>Database</b></h3>
+        </center>
+      </legend>
+      <br>
+      <p>Welcome, <a href="{% url 'officer-profile' %}">{{ user.first_name }} {{ user.last_name }}</a>
+      <a class="float_right_link" href="{% url 'MVNS-logout' %}">Logout</a></p>
+
+      <a href="{% url 'MVNS-add-data' %}" class="btn btn-primary">ADD NEW DATA</a>
+      <a href="{% url 'officer-register' %}" class="btn btn-primary">REGISTER A NEW OFFICER</a>
+      <br>
+      <br>
+      <!-- Container for View Control -->
+      <div class="form-row">
+        <div class="col-12 col-lg-3 col-md-6 col-sm-12">
+          <!-- Date -->
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                Date:
+              </span>
+            </div>
+            <input id="dateFilter" name="dateFilter" class="form-control" placeholder="" type="date">
+          </div>
+        </div>
+        <div class="col-12 col-lg-3 col-md-6 col-sm-12">
+          <!-- From -->
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                From:
+              </span>
+            </div>
+          <input id="timeFromFilter" name="timeFromFilter" class="form-control" placeholder="" type="time">
+          </div>
+        </div>
+        <div class="col-12 col-lg-3 col-md-6 col-sm-12">
+          <!-- To -->
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                To:
+              </span>
+            </div>
+          <input id="timeToFilter" name="timeToFilter" class="form-control" placeholder="" type="time">
+          </div>
+        </div>
+        <div class="col-12 col-lg-3 col-md-6 col-sm-12">
+          <!-- Office -->
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                Officer:
+              </span>
+            </div>
+            <select id="officeFilter" name="officeFilter" class="custom-select" >
+              <option value="">Select Officer</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <!-- Table Container -->
+      <div>
+        <table id='readingTable' class="view_table">
+          <!-- Table Header -->
+          <thead>
+            <tr>
+              <th>Order No.</th>
+              <th>Date</th>
+              <th class="short_cell">Time</th>
+              <th>Officer</th>
+              <th>Name</th>
+              <th>Plate No.</th>
+              <th>db Reading</th>
+              <th>Distance</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for val in allData %}
+            <tr>
+              <td>
+                <a href="{% url 'MVNS-edit-data' val.pk %}">{{val.orderNumber}}</a>
+              </td>
+              <td>{{val.dateDataCollected}}</td>
+              <td>{{val.timeDataCollected}}</td>
+              <td>{{val.officerName.first_name}} {{" "}} {{""}} {{val.officerName.last_name}}</td>
+              <td>{{val.motoristFirstName}}{{" "}} {{val.motoristMiddleInitial}} {{" "}} {{val.motoristLastName}}</td>
+              <td>{{val.plateNumber}}</td>
+              <td>{{val.dbReading}}</td>
+              <td>{{val.distance}}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+{% endblock content %}

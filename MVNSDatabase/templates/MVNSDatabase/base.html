@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  {% if page_title %}
+    <title>MVNS - {{page_title}}</title>
+  {% else %}
+    <title>MVNS</title>
+  {% endif %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'MVNSDatabase/CSS/style.css' %}">
+</head>
+<body>
+  <div class="content">
+    <header>
+      <img class="logo" alt="LTO Logo" src='{% static "MVNSDatabase/Media/LTO Logo.png" %}'>
+      <h5>Republic of the Philippines</h5>
+      <h1>LTO - Motorized Vehicle Noise Sensor Database</h1>
+      <h5>Department of Transportation</h5>
+    </header>
+    <br>
+    <br>
+    {% if messages %}
+      {% for message in messages %}
+          <div class="container">
+              <div class="message_box_limit">
+                <div class="alert alert-{{ message.tags }}">
+                  <h6>{{ message }}</h6>
+                </div>
+              </div>
+          </div>
+      {% endfor %}
+    {% endif %}
+    {% block content %}{% endblock %}
+  </div>
+  <br>
+  <footer class="footer">
+    <p>All Rights Reserved<a class="float_right_link" href="#top">Back to Top</a></p>
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+</body>
+</html>

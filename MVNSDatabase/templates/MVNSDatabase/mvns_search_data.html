@@ -1,0 +1,20 @@
+{% extends "MVNSDatabase/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container" style="width:90%; margin:auto">
+        <div class="form_container">
+            <legend><center><h3><b>Search Data</b></h3></center></legend>
+            <hr>
+            <form action="" method="POST">
+            {% csrf_token %}
+            <label for="enteredOrderNumber">Order Number:</label><input id="enteredOrderNumber" name="enteredOrderNumber" class="form-control"
+                   placeholder="Enter Order Number" type="number">
+            <br>
+            <a href="{% url 'MVNS-index' %}" class="btn btn-danger">Back to Home</a>
+            <button type="submit" class="btn btn-primary">Search</button>
+            <br>
+            <br>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

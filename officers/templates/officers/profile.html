@@ -1,0 +1,22 @@
+{% extends "MVNSDatabase/base.html" %}
+{% block content %}
+    <div class="container">
+        <div class="form_container">
+            <legend><center><h3><b>User Profile</b></h3></center></legend>
+            <hr>
+            <h5>Username: {{ user.username }}</h5>
+            <h5>First Name: {{ user.first_name }}</h5>
+
+            <h5>Last Name: {{ user.last_name }}</h5>
+            <a href="{% url 'MVNS-view' %}" class="btn btn-danger">Back</a>
+
+            <a href="{% url 'officer-change-password' %}" class="btn btn-primary">Change Password</a>
+            <br>
+            <br>
+        </div>
+    </div>
+
+
+{% endblock content %}
+<a href="{% url 'officer-edit-profile' %}" class="btn btn-success">Edit</a>
+<h5>Middle Initial: {{ user.profile.middle_initial }}</h5>

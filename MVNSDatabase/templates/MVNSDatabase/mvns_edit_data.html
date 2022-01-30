@@ -1,0 +1,17 @@
+{% extends "MVNSDatabase/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <legend>
+      <center>
+        <h3><b>Edit Data</b></h3>
+      </center>
+    </legend>
+    <div class="container" style="width:90%; margin:auto">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ info | crispy }}
+            <a href="{% url 'MVNS-view' %}" class="btn btn-danger">Cancel</a>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+{% endblock content %}
